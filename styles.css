@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 20, 0.7); /* Dark overlay for better contrast */
+    z-index: -1;
+}
+
+body.dark-mode::before {
+    background: rgba(0, 0, 50, 0.8); /* Slightly darker overlay for dark mode */
+}
+
+.container {
+    max-width: 600px;
+    width: 90%;
+    padding: 30px;
+    background: rgba(10, 25, 47, 0.9); /* Deep space blue with transparency */
+    border-radius: 20px;
+    border: 2px solid #00d4ff; /* Glowing cyan border */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); /* Glowing effect */
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.dark-mode .container {
+    background: rgba(5, 15, 30, 0.9);
+    border-color: #ff00ff; /* Magenta glow for dark mode */
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+header {
+    DISPLAY: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #00d4ff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+.dark-mode h1 {
+    color: #ff00ff;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+#theme-toggle {
+    padding: 10px 20px;
+    border: 2px solid #00d4ff;
+    border-radius: 10px;
+    background: transparent;
+    color: #00d4ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#theme-toggle:hover {
+    background: #00d4ff;
+    color: #0a192f;
+    box-shadow: 0 0 10px #00d4ff;
+}
+
+.dark-mode #theme-toggle {
+    border-color: #ff00ff;
+    color: #ff00ff;
+}
+
+.dark-mode #theme-toggle:hover {
+    background: #ff00ff;
+    color: #0a192f;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+.input-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #00d4ff;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#task-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#task-input:focus {
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    outline: none;
+}
+
+#add-task-btn {
+    padding: 12px 25px;
+    border: 2px solid #00d4ff;
+    border-radius: 10px;
+    background: transparent;
+    color: #00d4ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#add-task-btn:hover {
+    background: #00d4ff;
+    color: #0a192f;
+    box-shadow: 0 0 10px #00d4ff;
+}
+
+#task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid #00d4ff;
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    animation: slideIn 0.5s ease;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .task-item {
+    border-color: #ff00ff;
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.3);
+}
+
+.task-item.completed {
+    background: rgba(0, 212, 255, 0.2);
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.dark-mode .task-item.completed {
+    background: rgba(255, 0, 255, 0.2);
+}
+
+.task-item span {
+    flex: 1;
+    cursor: pointer;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.task-item button {
+    padding: 8px 15px;
+    border: 2px solid #ff7675;
+    border-radius: 10px;
+    background: transparent;
+    color: #ff7675;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task-item button:hover {
+    background: #ff7675;
+    color: #ffffff;
+    box-shadow: 0 0 10px #ff7675;
+    transform: scale(1.1);
+}
+
+.task-item.pop-out {
+    animation: popOut 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
