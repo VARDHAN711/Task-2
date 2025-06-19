@@ -15,7 +15,6 @@ A dynamic and visually stunning To-Do List web application built with vanilla Ja
 
 ## Screenshots
 
-
 ![To-Do Magic in Light Mode](image-1.png)
 ![To-Do Magic in Dark Mode ](image.png)
  
